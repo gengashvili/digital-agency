@@ -7,17 +7,33 @@ export default function NavBar() {
   const { themeHandler } = useDarkModeToggle();
 
   return (
-    <header className="bg-red-900 dark:bg-green-900">
-      <Link href="/">digital agency</Link>
-      <nav>
-        <Link href="/">Home</Link>
-        <Link href="/portfolio">Portfolio</Link>
-        <Link href="/blog">BLog</Link>
-        <Link href="/about">About</Link>
-        <Link href="/contact">Contact</Link>
-        <Link href="/dashboard">Dashboard</Link>
+    <header className="py-6 flex flex-col md:flex-row md:justify-between items-center text-center md:text-left max-w-screen-2xl mx-auto">
+      <Link href="/" className="text-2xl font-bold">
+        digital agency
+      </Link>
+      <nav className="flex flex-col mt-4 md:flex-row md:mt-0 md:space-x-4">
+        <Link href="/" className="nav-link">
+          Home
+        </Link>
+        <Link href="/portfolio" className="nav-link">
+          Portfolio
+        </Link>
+        <Link href="/blog" className="nav-link">
+          Blog
+        </Link>
+        <Link href="/about" className="nav-link">
+          About
+        </Link>
+        <Link href="/contact" className="nav-link">
+          Contact
+        </Link>
+        <Link href="/dashboard" className="nav-link">
+          Dashboard
+        </Link>
       </nav>
-      <button onClick={themeHandler}>change theme</button>
+      <button className=" mt-4 md:mt-0 md:ml-4" onClick={themeHandler}>
+        theme change
+      </button>
     </header>
   );
 }
