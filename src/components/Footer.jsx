@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
 export default function Footer() {
   return (
-    <footer className='max-w-screen-2xl mx-auto'>
-        <div>©2023 digital agency. All rights reserved</div>
+    <footer className="w-full h-16 flex justify-center items-center absolute bottom-0 left-0">
+      <p>©2023 digital agency. All rights reserved</p>
     </footer>
-  )
+  );
 }
