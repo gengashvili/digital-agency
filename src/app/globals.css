@@ -3,12 +3,26 @@
 @tailwind utilities;
 
 body {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
   min-height: 100vh;
-  @apply bg-gradient-to-b from-green-900 to-blue-600 dark:from-black dark:to-gray-900 px-4 md:px-8 text-white;
+  @apply px-4 text-white bg-gradient-to-b from-green-900 to-blue-600 dark:from-black dark:to-gray-900 md:px-8;
 }
 .nav-link {
   @apply block mt-2 md:inline-block md:mt-0 hover:text-red-500;
 }
 .link-btn {
-  @apply bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-fit;
+  @apply px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-600 w-fit;
+}
+
+.contact-form-btn {
+  @apply px-4 py-2 font-bold text-white transition-all duration-200 bg-blue-500 rounded-md hover:bg-blue-600;
+}
+.contact-form-input {
+  @apply px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300;
+}
+
+.portfolio-card {
+  @apply flex flex-col items-center justify-center p-4 space-y-4 text-xl transition-shadow border border-white border-solid rounded-lg shadow-md h-72 hover:shadow-lg;
 }
