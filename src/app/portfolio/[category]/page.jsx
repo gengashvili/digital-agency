@@ -33,6 +33,7 @@ export default function Category({ params }) {
               src={item.image}
               alt=""
               layout="fill"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
           <article className="flex-1 flex flex-col gap-4 justify-center">
