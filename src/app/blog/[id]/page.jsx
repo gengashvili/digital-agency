@@ -1,5 +1,4 @@
-import React from "react";
-import styles from "./page.module.css";
+import CustomImage from "@/components/CustomImage";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -15,34 +14,25 @@ async function getData(id) {
   return res.json();
 }
 
-export async function generateMetadata({ params }) {
-  const post = await getData(params.id);
-  return {
-    title: post.title,
-    description: post.description,
-  };
-}
-
-export default async function ({ params }) {
+const BlogPost = async ({ params }) => {
   const data = await getData(params.id);
   return (
-    <div>
-      <div>
+    <main>
+      <article>
         <div>
           <h2>{data.title}</h2>
           <p>{data.description}</p>
           <div>
-            <Image src={data.img} alt="" width={40} height={40} />
-            <span>{data.author}</span>
+            <CustomImage imageSrc={data.image} />
+            <span>{data.username}</span>
           </div>
         </div>
-        <div>
-          <Image src={data.img} alt="" fill={true} />
-        </div>
-      </div>
-      <div>
+      </article>
+      <article>
         <p>{data.content}</p>
-      </div>
-    </div>
+      </article>
+    </main>
   );
-}
+};
+
+export default BlogPost;

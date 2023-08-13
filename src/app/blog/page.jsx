@@ -1,10 +1,10 @@
+import CustomImage from "@/components/CustomImage";
 import Link from "next/link";
-import Image from "next/image";
+
+const serverApi = "http://localhost:3000/api";
 
 async function getData() {
-  const res = await fetch("http://localhost:3000/api/posts", {
-    cache: "no-store",
-  });
+  const res = await fetch(`${serverApi}/posts`, { next: { revalidate: 20 } });
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
@@ -17,24 +17,20 @@ export default async function Blog() {
   const data = await getData();
 
   return (
-    <div>
-      {data.map((item) => (
-        <Link href={`/blog/${item._id}`} key={item.id}>
-          <div>
-            <Image
-              src={item.img}
-              alt=""
-              width={400}
-              height={250}
-              className={styles.image}
-            />
-          </div>
-          <div>
-            <h1>{item.title}</h1>
-            <p>{item.desc}</p>
-          </div>
-        </Link>
-      ))}
-    </div>
+    <main>
+      <section>
+        {data.map((item) => {
+          return (
+            <Link href={`/blog/${item._id}`} key={item._id}>
+              <CustomImage imageSrc={item.image} />
+              <div>
+                <h2>{item.title}</h2>
+                <p>{item.description}</p>
+              </div>
+            </Link>
+          );
+        })}
+      </section>
+    </main>
   );
 }
